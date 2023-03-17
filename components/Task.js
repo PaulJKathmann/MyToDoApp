@@ -1,11 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { completeTask} from '../App';
 
 const Task = (props) => {
+    const {index, completeTask } = props;
     return (
         <View style={styles.item}>
             <View style={styles.itemLeft}>
-                <TouchableOpacity style={styles.square}></TouchableOpacity>
+                <TouchableOpacity style={styles.square} key={index} onPress={() => completeTask(index)}>
+                </TouchableOpacity>
                 <Text style={styles.itemText}>
                     {props.text}
                 </Text>
