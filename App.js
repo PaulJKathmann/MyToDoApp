@@ -1,10 +1,18 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, KeyboardAvoidingView, Platform, TextInput, TouchableOpacity, Keyboard, Touchable } from 'react-native';
+‍import thunk from 'redux-thunk';
+‍import { Provider } from 'react-redux';
+‍import { applyMiddleware, combineReducers, createStore } from 'redux';
 import Task from './components/Task';
+‍import reducers from './app/reducers';
+
+const rootReducer = combineReducers({...reducers});
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 export default function App() {
   const [task, setTask] = useState();
   const [taskItems, setTaskItems] = useState([]);
+  <provider store="{store}"></provider>
 
   const handleAddTask = () => {
     Keyboard.dismiss();
